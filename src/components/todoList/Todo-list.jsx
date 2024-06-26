@@ -3,6 +3,8 @@ import "./Todo.css";
 import TodoCreate from "./Todo-create";
 import TodoFilter from "./Todo-filter";
 import TodoItem from "./Todo-item";
+import { taskList } from "./taskList";
+
 
 const TodoList = () => {
   return (
@@ -12,9 +14,12 @@ const TodoList = () => {
       <div>
         <TodoFilter />
         <div className="task-list">
-          <TodoItem title="Work" completed={true} />
-          <TodoItem title="Shop" completed={false} />
-          <TodoItem title="Gym" completed={false} />
+          {taskList.map((task) => (
+            <TodoItem
+              key={task.id}
+              task={task}
+            />
+          ))}
         </div>
       </div>
     </div>
