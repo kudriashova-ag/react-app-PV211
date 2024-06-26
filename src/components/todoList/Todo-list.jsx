@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Todo.css";
 import TodoCreate from "./Todo-create";
 import TodoFilter from "./Todo-filter";
@@ -7,14 +7,21 @@ import { taskList } from "./taskList";
 
 
 const TodoList = () => {
+  const [tasks, setTasks] = useState(taskList);
+
+  const addTask = () => { 
+    alert('add')
+  }
+
+
   return (
     <div className="todo">
       <h1>Todo List</h1>
-      <TodoCreate />
+      <TodoCreate addTask={addTask} />
       <div>
         <TodoFilter />
         <div className="task-list">
-          {taskList.map((task) => (
+          {tasks.map((task) => (
             <TodoItem
               key={task.id}
               task={task}
