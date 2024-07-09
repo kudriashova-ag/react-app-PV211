@@ -13,3 +13,12 @@
 .task-item button{
     margin-left: auto;
 }
+
+.error{
+    font-size: .9em;
+    color: red;
+}
+
+.completed{
+    text-decoration: line-through;
+}

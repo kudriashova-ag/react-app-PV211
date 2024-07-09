@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Example.css";
 
 const Example = () => {
@@ -6,8 +6,11 @@ const Example = () => {
   const [count, setCount] = useState(1);
   const [visible, setVisible] = useState(false);
   const [user, setUser] = useState({ name: "Tom", age: 25 });
-
   const [age, setAge] = useState(user.age);
+
+  useEffect(() => { 
+    console.log('Effect');
+  }, [count, visible]);
 
   const increment = () => {
     setCount(count + 1);
