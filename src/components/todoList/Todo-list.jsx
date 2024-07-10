@@ -58,7 +58,6 @@ const TodoList = () => {
 
     setTasks(newTasks);
   }
-
   return (
     <div className="todo">
       <h1>Todo List</h1>
