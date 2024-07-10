@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import "./Todo.css";
 import TodoCreate from "./Todo-create";
 import TodoFilter from "./Todo-filter";
 import TodoItem from "./Todo-item";
 import { taskList } from "./taskList";
+import toDoReducer from "../../reducers/todoReducer";
+import { type } from "@testing-library/user-event/dist/type";
 
 
 const TodoList = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, dispatch] = useReducer(toDoReducer, []);
+  const [currentFilter, setCurrentFilter] = useState('All tasks');
+
 
   useEffect(() => { 
     const storedTasks = localStorage.getItem('tasks');
-    setTasks(storedTasks ? JSON.parse(storedTasks) : taskList);
+    dispatch({
+      type: 'SET_TASKS',
+      payload: { tasks: storedTasks ? JSON.parse(storedTasks) : taskList }
+    })
   }, []);
 
   useEffect(() => {
@@ -19,44 +26,37 @@ const TodoList = () => {
    }, [tasks]);
 
   const addTask = (title) => { 
-    setTasks([...tasks, {
-      id: tasks.length + 1,
-      title,
-      completed: false
-    }]);
+    dispatch({
+      type: 'ADD_TASK',
+      payload: { title }
+    });
   }
 
   const deleteTask = (id) => { 
-    const newTasks = tasks.filter(task => task.id !== id);
-    setTasks(newTasks);
+    dispatch({
+      type: 'DELETE_TASK',
+      payload: { id }
+    })
   }
 
   const toggleComplete = (id) => { 
-    const newTasks = tasks.map(task => {
-      if (task.id === id) { 
-        return {
-          ...task,
-          completed: !task.completed
-        }
-      }
-      return task;
-    });
-
-    setTasks(newTasks);
+    dispatch({
+      type: 'TOGGLE_COMPLETE',
+      payload: { id }
+    })
   }
 
   const updateTask = (id, newTitle) => { 
-    const newTasks = tasks.map(task => { 
-      if (task.id === id) { 
-        return {
-          ...task,
-          title: newTitle
-        }
-      }
-      return task;
-    })
+    dispatch({
+      type: 'UPDATE_TASK',
+      payload: { id, newTitle }
+    });
+  }
 
-    setTasks(newTasks);
+  const filterMap = {
+    'All tasks': () => true,
+    Done: task => task.completed,
+    ToDo: task => !task.completed
   }
 
   return (
@@ -64,9 +64,13 @@ const TodoList = () => {
       <h1>Todo List</h1>
       <TodoCreate addTask={addTask} />
       <div>
-        <TodoFilter />
+        <TodoFilter
+          setCurrentFilter={setCurrentFilter}
+          currentFilter={currentFilter}
+          filterMap={filterMap}
+        />
         <div className="task-list">
-          {tasks.map((task) => (
+          {tasks.filter(filterMap[currentFilter]).map((task) => (
             <TodoItem
               key={task.id}
               task={task}

@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { useState } from "react";
 
 const TodoItem = ({ task, deleteTask, toggleComplete, updateTask }) => {
@@ -20,7 +21,7 @@ const TodoItem = ({ task, deleteTask, toggleComplete, updateTask }) => {
         defaultChecked={task.completed}
         onChange={() => toggleComplete(task.id)}
       />
-      <span className={task.completed ? "completed" : ""} onClick={()=>setIsEditing(true)}>{task.title}</span>
+      <span className={classNames({ completed: task.completed })} onClick={()=>setIsEditing(true)}>{task.title}</span>
       <button onClick={() => deleteTask(task.id)}>Delete</button>
     </>
   );
@@ -30,7 +31,8 @@ const TodoItem = ({ task, deleteTask, toggleComplete, updateTask }) => {
     <input type="text" value={title} onChange={e=>setTitle(e.target.value)} />
     <button onClick={saveClickHandler}>Save</button>
   </>;
-
+  
+  
   return <div className="task-item">{isEditing ? editTemplate : normalTemplate}</div>;
 };
 

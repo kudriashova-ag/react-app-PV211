@@ -1,10 +1,15 @@
-import TodoList from "./components/todoList/Todo-list";
-import Example from "./components/Example";
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 function App() {
   return (
     <>
-      <TodoList />
-      {/* <Example /> */}
+      <header>
+        <Link to="/">Home</Link>
+        <Link to="todo">Todo</Link>
+        <Link to="example">Example</Link>
+      </header>
+
+      <Outlet />
     </>
   );
 }

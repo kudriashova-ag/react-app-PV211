@@ -22,3 +22,11 @@
 .completed{
     text-decoration: line-through;
 }
+
+.filter button{
+    background-color: rgb(255, 193, 193);
+}
+
+.filter .current{
+    background-color: dodgerblue;
+}
