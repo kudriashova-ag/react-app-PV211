@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 
 const TodoCreate = ({ addTask }) => {
   const [title, setTitle] = useState("");
@@ -29,4 +29,4 @@ const TodoCreate = ({ addTask }) => {
   );
 };
 
-export default TodoCreate;
+export default memo(TodoCreate);

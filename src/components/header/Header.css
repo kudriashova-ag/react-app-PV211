@@ -1,0 +1,19 @@
+header{
+    background-color: black;
+    padding: 1em 0;
+}
+
+header nav{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+header nav a{
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav a.active{
+    color: dodgerblue
+}

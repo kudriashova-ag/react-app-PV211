@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useCallback, useEffect, useReducer, useState } from "react";
 import "./Todo.css";
 import TodoCreate from "./Todo-create";
 import TodoFilter from "./Todo-filter";
@@ -25,12 +25,12 @@ const TodoList = () => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
    }, [tasks]);
 
-  const addTask = (title) => { 
+  const addTask = useCallback((title) => {
     dispatch({
       type: 'ADD_TASK',
       payload: { title }
     });
-  }
+  }, []);
 
   const deleteTask = (id) => { 
     dispatch({
