@@ -5,7 +5,6 @@ import TodoFilter from "./Todo-filter";
 import TodoItem from "./Todo-item";
 import { taskList } from "./taskList";
 import toDoReducer from "../../reducers/todoReducer";
-import { type } from "@testing-library/user-event/dist/type";
 
 
 const TodoList = () => {
