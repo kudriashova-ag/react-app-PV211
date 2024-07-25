@@ -3,7 +3,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 import  './Header.css';
 import { ThemeContext } from '../../contexts/themeContext';
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import { Button, Space } from 'antd';
+import Auth from '../auth/Auth';
 
 const Header = () => {
   const location = useLocation(); 
@@ -18,11 +19,16 @@ const Header = () => {
           <NavLink to="counters">Counters</NavLink>
         </nav>
 
-        <Button
-          shape="circle"
-          icon={theme === "dark" ? <SunOutlined /> : <MoonOutlined />}
-          onClick={toggleTheme}
-        />
+        <Space size={'middle'}>
+          <Button
+            shape="circle"
+            icon={theme === "dark" ? <SunOutlined /> : <MoonOutlined />}
+            onClick={toggleTheme}
+          />
+          <Auth />
+        </Space>
+
+
       </header>
     );
 }

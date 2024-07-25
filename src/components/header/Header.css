@@ -1,28 +1,38 @@
-header{
-    background-color: black;
-    padding: 1em 5em;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+header {
+  background-color: black;
+  padding: 1em 5em;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-header nav{
-    display: flex;
-    justify-content: center;
-    gap: 1em;
+header nav {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
 }
 
-header nav a{
-    color: inherit;
-    text-decoration: none;
+header nav a {
+  color: inherit;
+  text-decoration: none;
 }
 
-header nav a.active{
-    color: dodgerblue
+header nav a.active {
+  color: dodgerblue;
 }
 
-header.theme-light{
-    background-color: #ddd;
-    color: #000;
+header.theme-light {
+  background-color: #ddd;
+  color: #000;
+}
+
+body {
+  background-color: #161616;
+  color: #fff;
+}
+
+body.theme-light {
+  background-color: #fff;
+  color: #000;
 }

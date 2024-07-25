@@ -9,10 +9,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   // <React.StrictMode>
-  // <ThemeContext.Provider value="light">
-  <ThemeProvider>
-    <RouterProvider router={router} />
-  </ThemeProvider>
-  // </ThemeContext.Provider>
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   // </React.StrictMode>
 );
