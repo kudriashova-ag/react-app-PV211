@@ -26,6 +26,8 @@ const Example = () => {
 
   return (
     <div>
+      <div className="invalid">Invalid</div>
+      
       <button onClick={decrement}>-</button>
       <span>{count}</span>
       <button onClick={increment}>+</button>
