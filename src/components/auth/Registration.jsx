@@ -2,7 +2,6 @@ import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 import styles from "./Form.module.css";
-console.log(styles);
 
 const initialValues = {
   name: "",
@@ -16,7 +15,7 @@ const initialValues = {
 };
 
 const submitHandler = (values, formikBag) => {
-  console.log(values);
+  //console.log(values);
   //console.log(formikBag);
   formikBag.resetForm();
   // formikBag.setFieldValue("name", "TOM");

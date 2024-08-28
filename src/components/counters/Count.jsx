@@ -5,7 +5,7 @@ const render = {
     count2: 0
 }
 const Count = ({ value, id }) => {
-    console.log(`Count ${id} render: ${++render[`count${id}`]}`);
+    //console.log(`Count ${id} render: ${++render[`count${id}`]}`);
     return (
         <span>
             {value}

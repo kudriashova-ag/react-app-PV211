@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import {  NavLink, useLocation } from 'react-router-dom';
 import  './Header.css';
 import { ThemeContext } from '../../contexts/themeContext';
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
@@ -17,9 +17,10 @@ const Header = () => {
           <NavLink to="todo">Todo</NavLink>
           <NavLink to="example">Example</NavLink>
           <NavLink to="counters">Counters</NavLink>
+          <NavLink to="users">Users</NavLink>
         </nav>
 
-        <Space size={'middle'}>
+        <Space size={"middle"}>
           <Button
             shape="circle"
             icon={theme === "dark" ? <SunOutlined /> : <MoonOutlined />}
@@ -27,8 +28,6 @@ const Header = () => {
           />
           <Auth />
         </Space>
-
-
       </header>
     );
 }

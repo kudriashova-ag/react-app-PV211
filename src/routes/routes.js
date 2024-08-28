@@ -4,6 +4,9 @@ import Home from "../pages/home/home";
 import TodoList from "../components/todoList/Todo-list";
 import Example from "../components/Example";
 import Counters from "../components/counters/Counters";
+import Users from "../pages/users/Users";
+import { getUser, getUsers } from "../loaders/usersLoaders";
+import User from "../pages/users/User";
 
 const router = createBrowserRouter([
     {
@@ -26,7 +29,21 @@ const router = createBrowserRouter([
             {
                 path: "counters",
                 element: <Counters />,
-            }
+            },
+            {
+                path: "users",
+                element: <Users />,
+                loader: getUsers,
+                children: [
+                    {
+                        path: ":id",   /* users/:id */
+                        element: <User />,
+                        loader: getUser
+                    },
+                   
+                ]
+            },
+
         ],
     },
 ]);
