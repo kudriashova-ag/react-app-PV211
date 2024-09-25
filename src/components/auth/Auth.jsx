@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import Registration from "./Registration";
+import Login from "./Login";
 const Auth = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -18,12 +19,11 @@ const Auth = () => {
       <Button type="primary" shape="circle" onClick={showModal} icon={<UserOutlined />} />
 
       <Modal
-        title="Basic Modal"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <Registration />
+        <Login />
       </Modal>
     </>
   );
