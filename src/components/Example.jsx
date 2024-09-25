@@ -28,9 +28,10 @@ const Example = () => {
 
   return (
     <div>
-      <button onClick={() => dispatch(decrement())}>-</button>
-      <span>{counter}</span>
-      <button onClick={() => dispatch(incrementByAmount(3))}>+3</button>
+      <button onClick={decrement}>-</button>
+      <span>{count}</span>
+      <button onClick={increment}>+</button>
+      <hr />
 
       {posts.map(post => <div>{post.title}</div>)}
       

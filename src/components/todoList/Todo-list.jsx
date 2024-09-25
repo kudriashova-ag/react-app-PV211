@@ -5,6 +5,7 @@ import TodoFilter from "./Todo-filter";
 import TodoItem from "./Todo-item";
 import { taskList } from "./taskList";
 import toDoReducer from "../../reducers/todoReducer";
+import { Link } from "react-router-dom";
 
 
 const TodoList = () => {
@@ -79,6 +80,8 @@ const TodoList = () => {
             />
           ))}
         </div>
+
+        <Link to="/users">Users</Link>
       </div>
     </div>
   );
