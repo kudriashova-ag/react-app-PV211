@@ -28,13 +28,15 @@ const Example = () => {
 
   return (
     <div>
-      <button onClick={decrement}>-</button>
-      <span>{count}</span>
-      <button onClick={increment}>+</button>
+      <button onClick={() => dispatch(decrement())}>-</button>
+      <span>{counter}</span>
+      <button onClick={() => dispatch(incrementByAmount(5))}>+5</button>
       <hr />
 
-      {posts.map(post => <div>{post.title}</div>)}
-      
+      {posts.map((post) => (
+        <div>{post.title}</div>
+      ))}
+
       <button onClick={addPost}>Add post </button>
     </div>
   );
