@@ -1,48 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Example.css";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, incrementByAmount } from "../slices/counterSlice";
+import { createPost, getPosts } from "../thunks/postsThunk";
 
 const Example = () => {
-  // стан компонента. Його зміна веде до перерендеру компонента
-  const [count, setCount] = useState(1);
-  const [visible, setVisible] = useState(false);
-  const [user, setUser] = useState({ name: "Tom", age: 25 });
-  const [age, setAge] = useState(user.age);
+  const counter = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
 
+  const posts = useSelector((state) => state.posts.data);
+  const status = useSelector((state) => state.posts.status);
+  
   useEffect(() => { 
-    console.log('Effect');
-  }, [count, visible]);
+    dispatch(getPosts());
+  }, []);
 
-  const increment = () => {
-    setCount(count + 1);
-  };
+  const addPost = () => { 
+    dispatch(createPost({
+      title: 'New post',
+      body: 'New body',
+    }));
+  }
 
-  const decrement = () => {
-    setCount(count - 1);
-  };
-
-  const changeAge = () => {
-    setUser({ ...user, age: age });
-  };
+  if (status === 'loading') {
+    return <div>Loading...</div>
+  }
 
   return (
     <div>
-      <button onClick={decrement}>-</button>
-      <span>{count}</span>
-      <button onClick={increment}>+</button>
-      <hr />
+      <button onClick={() => dispatch(decrement())}>-</button>
+      <span>{counter}</span>
+      <button onClick={() => dispatch(incrementByAmount(3))}>+3</button>
 
-      <button onClick={() => setVisible(!visible)}>Show</button>
-      {visible && <div>Lorem, ipsum dolor.</div>}
-      <hr />
-
-      <h4>
-        {user.name}, {user.age}
-      </h4>
-      <button onClick={changeAge}>Change age</button>
-      <div>
-        <input type="text" value={age} onChange={(e)=>setAge(e.target.value)} />
-      </div>
-      <hr />
+      {posts.map(post => <div>{post.title}</div>)}
+      
+      <button onClick={addPost}>Add post </button>
     </div>
   );
 };
