@@ -14,18 +14,18 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => {
-    const authUser = useSelector((state) => state.auth.user);
+  const authUser = useSelector((state) => state.auth.user);
 
   const dispatch = useDispatch();
   const submitHandler = (values, formikBag) => {
     console.log(values);
     dispatch(login(values));
     formikBag.resetForm();
-    };
-    
+  };
+
   return (
     <div>
-      <h1>Login  {authUser.name} </h1>
+      <h1>Login {authUser.name} </h1>
       <Formik
         initialValues={initialValues}
         onSubmit={submitHandler}
